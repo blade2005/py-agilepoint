@@ -1,5 +1,4 @@
 """AgilePoint API Lib"""
-import requests
 from hammock import Hammock
 from .admin import Admin
 from .workflow import Workflow
