@@ -12,3 +12,15 @@ for key, value in db_info['GetDatabaseInfoResult'].items():
     print('{}: {}'.format(key,value))
 
 ```
+
+Register Users
+```
+users = {'First Last': 'email@domain.tld'}
+for name, email in users.items():
+    r = ap.admin.register_user(UserName=email, FullName=name)
+    print(r)
+
+```
+
+Note: It's not well defined what arguments are required and what is optional. I've made logical conclusions. If you notice that the required/optional arguments is incorrect please submit a PR.
+
