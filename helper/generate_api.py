@@ -158,28 +158,28 @@ class PyMethod(object):
         line1 += '):'
         method.append(line1)
 
-        line2 = '    """{description}'.format(description=self.description)
+        line2 = '        """{description}'.format(description=self.description)
         method.append(line2)
         method.append('')
-        method.append('    {}'.format(self.url))
+        method.append('        {}'.format(self.url))
         method.append('')
 
         if len(self.path_args) > 0:
-            method.append('    Path Args: {}'.format(', '.join(self.path_args)))
+            method.append('        Path Args: {}'.format(', '.join(self.path_args)))
         else:
-            method.append('    Path Args: None')
+            method.append('        Path Args: None')
 
         if len(self.req_args) > 0:
-            method.append('    Required Body Args: {}'.format(', '.join(self.req_args)))
+            method.append('        Required Body Args: {}'.format(', '.join(self.req_args)))
             # method.append('    Optional Body Args: {}"""'.format(', '.join(self.req_args)))
-            method.append('    Optional Body Args: None"""')
-            method.append('    req_args = {}'.format(repr(self.req_args)))
-            method.append('    validate_args(kwargs, req_args)')
+            method.append('        Optional Body Args: None"""')
+            method.append('        req_args = {}'.format(repr(self.req_args)))
+            method.append('        validate_args(kwargs, req_args)')
         else:
-            method.append('    Required Body Args: None')
-            method.append('    Optional Body Args: None"""')
+            method.append('        Required Body Args: None')
+            method.append('        Optional Body Args: None"""')
 
-        line8 = '    resp = self.{}.{}'.format(self.section.lower(), self.restapi)
+        line8 = '        resp = self.{}.{}'.format(self.section.lower(), self.restapi)
         if len(self.path_args) > 0:
             for arg in [fix_camel_case(a) for a in self.path_args]:
                 line8 += '({})'.format(arg)
@@ -191,8 +191,8 @@ class PyMethod(object):
             line8 += '()'
         method.append(line8)
 
-        method.append("    return handle_response('{}', resp)".format(self.resp_type))
-        return '\n    '.join(method)
+        method.append("        return handle_response('{}', resp)".format(self.resp_type))
+        return '\n'.join(method)
         
     def __repr__(self):
         return '<PyMethod: section={section} || restapi={restapi} || methodname={methodname} || url={url} || resp_type={resp_type} || req_args={req_args} || path_args={path_args} || description={description}>'.format(
