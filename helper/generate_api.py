@@ -54,6 +54,7 @@ def fix_camel_case(string):
         newstring = newstring.replace('e_mail', 'email')
         newstring = newstring.replace('u_u_i_d', 'uuid')
         newstring = newstring.replace('_i_d', '_id')
+        newstring = newstring.replace('p_i_i_d', 'piid')
     return newstring
 
 def describe_class(class_name):
@@ -159,7 +160,10 @@ class PyMethod(object):
         method.append(line1)
 
         line2 = '        """{description}'.format(description=self.description)
+        if not line2.endswith('.'):
+            line2 += '.'
         method.append(line2)
+
         method.append('')
         method.append('        {}'.format(self.url))
         method.append('')
@@ -211,14 +215,14 @@ FNULL = open(os.devnull, 'w')
 
 def write_header(section):
     resp = []
-    resp.append('"""{} Methods for AgilePoint API"""'.format(section))
+    resp.append('"""{} Methods for AgilePoint API."""'.format(section))
     resp.append('import json')
     resp.append('from ._utils import handle_response, validate_args')
     resp.append('# pylint: disable=too-many-public-methods,too-many-lines')
     resp.append('')
     resp.append('')
     resp.append('class {}(object):'.format(section))
-    resp.append('    """{} Methods for AgilePoint API"""'.format(section))
+    resp.append('    """{} Methods for AgilePoint API."""'.format(section))
     resp.append('    def __init__(self, agilepoint):')
     resp.append('        self.{} = agilepoint.agilepoint.{}'.format(section.lower(), section))
     resp.append('        self.agilepoint = agilepoint')
@@ -278,6 +282,9 @@ def main():
         else:
             logging.error('Unable to find useable section for %s', full_path)
             logging.error(repr(method))
+
+    admin_write.close()
+    workflow_write.close()
         # print(repr(method))
         # quit()
 
