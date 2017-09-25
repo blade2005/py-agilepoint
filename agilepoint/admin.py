@@ -553,12 +553,17 @@ class Admin(object):
 
         Path Args: None
         Required Body Args: UserName
-        Optional Body Args: Department, EMailAddress, FullName, Locale, Manager,
-                            OnlineContact, RefID, TimeZone, Title"""
+        Optional Body Args: Department, Disabled, EMailAddress, FullName,
+                            Level, Locale, Manager, OnlineContact, RefID,
+                            RegisteredDate, SupportedLanguage, TimeZone, Title,
+                            UALExpirationDate, UALNeverExpires, UserName,
+                            UserOrgInfo, WorkCalendarID"""
         req_args = ['UserName']
-        opt_args = ['Department', 'EMailAddress', 'FullName', 'Locale',
-                    'Manager', 'OnlineContact', 'RefID', 'TimeZone', 'Title',
-                    'UserName']
+        opt_args = ['Department', 'Disabled', 'EMailAddress', 'FullName',
+                    'Level', 'Locale', 'Manager', 'OnlineContact', 'RefID',
+                    'RegisteredDate', 'SupportedLanguage', 'TimeZone', 'Title',
+                    'UALExpirationDate', 'UALNeverExpires', 'UserName',
+                    'UserOrgInfo', 'WorkCalendarID']
         validate_args(kwargs, req_args, opt_args)
         resp = self.admin.UpdateRegisterUser.POST(data=json.dumps(kwargs))
         return handle_response('bool', resp)
