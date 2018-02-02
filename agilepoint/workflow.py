@@ -380,7 +380,7 @@ class Workflow(object):
             data=json.dumps(kwargs))
         return handle_response('json', resp)
 
-    def get_custom_attrsby_i_d(self, customid):
+    def get_custom_attrsby_id(self, customid):
         """Gets all the custom attributes with the specified array of custom
         IDs.
 
