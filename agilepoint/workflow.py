@@ -223,11 +223,11 @@ class Workflow(object):
         Path Args: None
         Required Body Args: Attributes, blnStartImmediately, CustomID,
                             Initiator, ProcessID, ProcessInstID, ProcInstName,
-                            WorkObjID, WorkObjInfo
-        Optional Body Args: SuperProcInstID"""
+                            WorkObjID, 
+        Optional Body Args: SuperProcInstID, WorkObjInfo"""
         req_args = ['Attributes', 'blnStartImmediately', 'CustomID',
                     'Initiator', 'ProcessID', 'ProcessInstID', 'ProcInstName',
-                    'WorkObjID', 'WorkObjInfo']
+                    'WorkObjID']
 
         validate_args(kwargs, req_args)
         resp = self.workflow.CreateProcInst.POST(data=json.dumps(kwargs))
