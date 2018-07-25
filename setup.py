@@ -17,8 +17,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 name = 'agilepoint'
-version_file = open(path.join(name, 'VERSION'))
-version = version_file.read().strip()
+version = '0.0.6'
 setup(
     name=name,
     version=version,
