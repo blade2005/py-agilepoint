@@ -17,7 +17,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 name = 'agilepoint'
-version = '0.0.6'
+version = '0.0.7'
 setup(
     name=name,
     version=version,
@@ -28,7 +28,7 @@ setup(
     author_email='cdavis@alertlogic.com',
     license='GPLv3',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
